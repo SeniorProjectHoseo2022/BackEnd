@@ -1,0 +1,26 @@
+<h1>file System</h1>
+
+<form action="/fs/upload" enctype="multipart/form-data" method="post" style="border: solid black;">
+    <h3>Single File Upload</h3>
+    roll_id : <input type="text" name="rid">
+    <br>
+    <input type="file" name="file">
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<form action="/fs/download" style="border: solid black;" method="post">
+    <p>fileDownload</p>
+    dir : <input type="text" name="dir" id="dir"><br>
+    <button>Submit</button>
+</form>
+
+<form action="/fs/list" style="border: solid black;" method="post">
+    <p>get rolling image list</p>
+    rid : <input type="text" name="rid" id="rid"><br>
+    <button>Submit</button>
+</form>
+
+<form action="/fs/create_roll" style="border: solid black;" method="post">
+    <p>create roll id</p>
+    <button>Submit</button>
+</form>

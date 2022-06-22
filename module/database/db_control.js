@@ -1,7 +1,8 @@
 const db = require('./db_conn');
 
-function run(sql, callback){
-    ExecuteQuery(sql, [], function (err,data){
+function run(sql, value, callback){
+    let query = sqlBuilder(sql, value)
+    ExecuteQuery(query, [], function (err,data){
         let js = JSON.stringify(data);
         js = JSON.parse(js);
         return callback(err, js);

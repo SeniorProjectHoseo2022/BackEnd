@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form action="board/select" style="border: solid black;" method="post">
+        <p>board select</p>
+        <button>Select</button>
+    </form>
+    <form action="board/create" style="border: solid black;" method="post">
+        <p>Create board</p>
+        category : <input type="text" name="category" id="category"><br>
+        rolling : <input type="text" name="rolling" id="rolling"><br>
+        text : <input type="text" name="text" id="text"><br>
+        view : <input type="int" name="view" id="view"><br>
+        group_id : <input type="int" name="group_id" id="group_id"><br>
+        writed_time : <input type="date" name="writed_time" id="writed_time"><br>
+        <button>Submit</button>
+    </form>
+    <form action="board/update" style="border: solid black;" method="post">
+        <p>Update board</p>
+                category : <input type="text" name="category" id="category"><br>
+                rolling : <input type="text" name="rolling" id="rolling"><br>
+                text : <input type="text" name="text" id="text"><br>
+                view : <input type="int" name="view" id="view"><br>
+                group_id : <input type="int" name="group_id" id="group_id"><br>
+                writed_time : <input type="date" name="writed_time" id="writed_time"><br>
+                <button>Submit</button>
+    </form>
+
+    <form action="board/delete" style="border: solid black;" method="post">
+        <p>delete</p>
+        <button>delete</button>
+    </form>
+
+    <form action="board/like" style="border: solid black;" method="post">
+            <p>like</p>
+            <button>like</button>
+    </form>
+
+    <form action="board/like" style="border: solid black;" method="post">
+             <p>comment</p>
+             rolling : <input type="text" name="cid" id="cid"><br>
+              text : <input type="text" name="board_id" id="board_id"><br>
+              view : <input type="int" name="text" id="text"><br>
+             <button>comment</button>
+    </form>
+
+
+
+
+    verify test : ./verify<br>
+    헤더 authorization에 토큰값 넣어서 보내주시면 됩니다.
+</body>
+
+
+</html>

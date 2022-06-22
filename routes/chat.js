@@ -1,20 +1,25 @@
 const express = require('express')
 const router = express.Router()
-const sql = require('../module/sql/user_sql')
+const sql = require('../module/sql/chat.js')
 const db = require('../module/database/db_control')
+const token = require("../module/token/token");
 
 
-router.post('/chat', function (req,res){
+router.get('/', function(req, res, next) {
+    res.render('chat', { title: 'Express' });
+});
+
+router.post('/dm', function (req,res){
     try {
-        const id = req.body.id;
-        const password = req.body.password;
-        const name = req.body.name;
-        const gender = req.body.gender;
-        db.run(sql.sign, [id, password, gender, name], function (err,data){
-            if(err == null) res.json({message:"200"})
-            else res.json({message:"500", errno:err.errno})
-        })
+        const id1 = req.body.id1;
+        const id2=req.body.id2;
+        db.run(sql.dm,[id1,id2],function (err,data){
+            if(data[0]!=undefined)  res.json(data);
+            else res.json({message:"200", data:"404"})
+        });
     }catch (e){
         res.json({message:"500"})
     }
 })
+
+module.exports = router;

@@ -4,7 +4,7 @@ function login(){
 }
 
 function sign(){
-    return "INSERT INTO god_life.user (id, password, gender, name) VALUES ($0, $1, $2, $3)"
+    return "INSERT INTO god_life.user (id, password, gender, name,position,x,y) VALUES ($0, $1, $2, $3,$4,$5,$6)"
 }
 
 function id_check(){

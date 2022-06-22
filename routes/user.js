@@ -26,9 +26,12 @@ router.post('/sign', function (req,res){
     try {
         const id = req.body.id;
         const password = req.body.password;
-        const name = req.body.name;
         const gender = req.body.gender;
-        db.run(sql.sign, [id, password, gender, name], function (err,data){
+        const name = req.body.name;
+        const position = req.body.position;
+        const x = req.body.x;
+        const y = req.body.y;
+        db.run(sql.sign, [id, password, gender, name,position,x,y], function (err,data){
             if(err == null) res.json({message:"200"})
             else res.json({message:"500", errno:err.errno})
         })
@@ -52,9 +55,14 @@ router.post('/id_check', function (req,res){
 
 router.post('/change', function (req,res){
     try {
+        const uid = req.body.id;
         const id = req.body.id;
         const password = req.body.password;
-        const gender=req.body.gender;
+        const gender = req.body.gender;
+        const name = req.body.name;
+        const position = req.body.position;
+        const x = req.body.x;
+        const y = req.body.y;
         db.run(sql.login,[id, password],function (err,data){
             if(data[0]!=undefined){
                 db.run(sql.change, [id,gender], function(err2, data2){

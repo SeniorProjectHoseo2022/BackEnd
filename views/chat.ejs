@@ -9,11 +9,20 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <form action="chat/dm" style="border: solid black;" method="post">
-        <p>board select</p>
+        <p>dm</p>
         id1 : <input type="text" name="id1" id="id2"><br>
         id2 : <input type="text" name="id2" id="id2"><br>
         <button>Select</button>
     </form>
+
+
+    <form action="chat/create_group" style="border: solid black;" method="post">
+            <p>group</p>
+            titles : <input type="text" name="titles" id="titles"><br>
+            master : <input type="text" name="master" id="master"><br>
+            category : <input type="text" name="category" id="category"><br>
+            <button>Select</button>
+        </form>
 
 
 

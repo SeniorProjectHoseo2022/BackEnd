@@ -22,4 +22,18 @@ router.post('/dm', function (req,res){
     }
 })
 
+router.post('/create_group', function (req,res){
+    try {
+        const titles = req.body.titles;
+        const master=req.body.master;
+        const category = req.body.category;
+        db.run(sql.create_group,[titles,master,category],function (err,data){
+            if(data[0]!=undefined)  res.json(data);
+            else res.json({message:"200", data:"404"})
+        });
+    }catch (e){
+        res.json({message:"500"})
+    }
+})
+
 module.exports = router;

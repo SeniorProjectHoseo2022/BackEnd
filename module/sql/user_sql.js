@@ -15,11 +15,12 @@ function change(){
     return "UPDATE god_life.user SET gender=$1 WHERE id=$0"
 }
 
-function delete(){
-    return ""
+function withdrawal(){
+    return "DELETE FROM god_life.user WHERE id=$0"
 }
 
 module.exports.login = login();
 module.exports.sign = sign();
 module.exports.id_check = id_check();
 module.exports.change= change();
+module.exports.withdrawal= withdrawal();

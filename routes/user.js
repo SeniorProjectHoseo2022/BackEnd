@@ -53,23 +53,34 @@ router.post('/id_check', function (req,res){
 router.post('/change', function (req,res){
     try {
         const id = req.body.id;
-        const gender= req.body.gender;
-        db.run(sql.change,[id, gender],function (err,data){
-            if(err == null)  res.json({message:"200"})
-            else res.json({message:"500", errno:err.errno})
+        const password = req.body.password;
+        const gender=req.body.gender;
+        db.run(sql.login,[id, password],function (err,data){
+            if(data[0]!=undefined){
+                db.run(sql.change, [id,gender], function(err2, data2){
+                    if(err2 == null)  res.json({message:"200"})
+                    else res.json({message:"500", errno:err2.errno})
+                })
+            }
+            else res.json({message:"500"})
         });
     }catch (e){
         res.json({message:"500"})
     }
 })
 
-router.post('/delete', function (req,res){
+router.post('/withdrawal', function (req,res){
     try {
         const id = req.body.id;
-        const gender= req.body.gender;
-        db.run(sql.change,[id, gender],function (err,data){
-            if(err == null)  res.json({message:"200"})
-            else res.json({message:"500", errno:err.errno})
+        const password = req.body.password;
+        db.run(sql.login,[id, password],function (err,data){
+            if(data[0]!=undefined){
+                db.run(sql.withdrawal, [id,password], function(err2, data2){
+                    if(err2 == null)  res.json({message:"200"})
+                    else res.json({message:"500", errno:err2.errno})
+                })
+            }
+            else res.json({message:"500"})
         });
     }catch (e){
         res.json({message:"500"})

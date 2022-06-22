@@ -14,5 +14,23 @@
         pw : <input type="password" name="password" id="password"><br>
         <button>Submit</button>
     </form>
+    <form action="user/sign" style="border: solid black;" method="post">
+        <p>login</p>
+        id : <input type="text" name="id" id="id"><br>
+        pw : <input type="password" name="password" id="password"><br>
+        name : <input type="text" name="name" id="name"><br>
+        gender : <input type="gender" name="gender" id="gender"><br>
+        <button>Submit</button>
+    </form>
+    <form action="user/id_check" style="border: solid black;" method="post">
+        <p>login</p>
+        id : <input type="text" name="id" id="id"><br>
+        <button>Submit</button>
+    </form>
+
+    verify test : ./verify<br>
+    헤더 authorization에 토큰값 넣어서 보내주시면 됩니다.
 </body>
+
+
 </html>

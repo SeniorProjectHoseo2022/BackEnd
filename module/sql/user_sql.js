@@ -11,6 +11,15 @@ function id_check(){
     return "select count(*) from user where id=$0"
 }
 
+function change(){
+    return "UPDATE god_life.user SET gender=$1 WHERE id=$0"
+}
+
+function delete(){
+    return ""
+}
+
 module.exports.login = login();
 module.exports.sign = sign();
 module.exports.id_check = id_check();
+module.exports.change= change();

@@ -50,6 +50,32 @@ router.post('/id_check', function (req,res){
     }
 })
 
+router.post('/change', function (req,res){
+    try {
+        const id = req.body.id;
+        const gender= req.body.gender;
+        db.run(sql.change,[id, gender],function (err,data){
+            if(err == null)  res.json({message:"200"})
+            else res.json({message:"500", errno:err.errno})
+        });
+    }catch (e){
+        res.json({message:"500"})
+    }
+})
+
+router.post('/delete', function (req,res){
+    try {
+        const id = req.body.id;
+        const gender= req.body.gender;
+        db.run(sql.change,[id, gender],function (err,data){
+            if(err == null)  res.json({message:"200"})
+            else res.json({message:"500", errno:err.errno})
+        });
+    }catch (e){
+        res.json({message:"500"})
+    }
+})
+
 router.post('/verify', verifyToken, function (req, res){
     res.json({message:200, decryption:req.decryption})
 })

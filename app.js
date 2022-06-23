@@ -24,6 +24,7 @@ const chatRouter = require('./routes/chat');
 const groupRouter = require('./routes/group');
 const fsRouter = require('./routes/fs');
 const commentRouter = require('./routes/comment');
+const like_logRouter = require('./routes/like_log');
 app.use('/', indexRouter);
 
 app.use('/test', testRouter);
@@ -33,6 +34,7 @@ app.use('/chat', chatRouter);
 app.use('/group', groupRouter);
 app.use('/fs', fsRouter);
 app.use('/comment', commentRouter);
+app.use('/like_log', like_logRouter);
 //
 
 // catch 404 and forward to error handler

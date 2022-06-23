@@ -13,9 +13,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/show_distance', function (req,res){
     try {
-        //const uid1 = req.body.uid1;
+        const uid1 = req.body.uid1;
        // const uid2 = req.body.uid2;
-        db.run(sql.show_distance,[],function (err,data){
+        db.run(sql.show_distance,[uid1],function (err,data){
             if(data[0]!=undefined)  res.json(data);
             else res.json({message:"200", data:"404"})
         });
@@ -26,9 +26,9 @@ router.post('/show_distance', function (req,res){
 
 router.post('/show_agedistance', function (req,res){
     try {
-       // const uid1 = req.body.uid1;
+        const uid1 = req.body.uid1;
        // const uid2 = req.body.uid2;
-        db.run(sql.show_agedistance,[],function (err,data){
+        db.run(sql.show_agedistance,[uid1],function (err,data){
             if(data[0]!=undefined)  res.json(data);
             else res.json({message:"200", data:"404"})
         });
@@ -66,9 +66,8 @@ router.post('/create', function (req,res){
         const text = req.body.text;
         const view = req.body.view;
         const group_id = req.body.group_id;
-        const writed_time = req.body.writed_time;
         const uid = req.body.uid;
-        db.run(sql.create, [category,rolling,text,view,group_id,writed_time,uid], function (err,data){
+        db.run(sql.create, [category,rolling,text,view,group_id,uid], function (err,data){
             if(err == null) res.json({message:"200"})
             else res.json({message:"500", errno:err.errno})
         })

@@ -13,8 +13,8 @@ router.post('/create', function (req,res){
     try {
        const board_id=req.body.board_id;
        const text=req.body.text;
-       const writed_time=req.body.writed_time;
-        db.run(sql.create,[board_id,text,writed_time],function (err,data){
+       //const writed_time=req.body.writed_time;
+        db.run(sql.create,[board_id,text],function (err,data){
             if(err == null) res.json({message:"200"})
             else res.json({message:"500", errno:err.errno})
         });

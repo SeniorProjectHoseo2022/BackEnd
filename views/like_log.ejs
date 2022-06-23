@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <form action="like_log/press" style="border: solid black;" method="post">
+            <p>like_log press</p>
+            bid: <input type="text" name="bid" id="bid"><br>
+            uid : <input type="text" name="uid" id="uid"><br>
+            time : <input type="date" name="time" id="time"><br>
+            <button>press</button>
+        </form>
+
+    <form action="like_log/cancel" style="border: solid black;" method="post">
+                <p>comment update</p>
+                board_id : <input type="text" name="board_id" id="board_id"><br>
+                text : <input type="text" name="text" id="text"><br>
+                <button>Select</button>
+    </form>
+
+
+
+
+
+
+    verify test : ./verify<br>
+    헤더 authorization에 토큰값 넣어서 보내주시면 됩니다.
+</body>
+
+
+</html>

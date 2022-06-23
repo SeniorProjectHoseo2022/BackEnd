@@ -1,6 +1,6 @@
 
 function create(){
-    return "INSERT INTO god_life.comment (board_id, text, writed_time) VALUES ($0, $1, $2)"
+    return "INSERT INTO god_life.comment (board_id, text, writed_time) VALUES ($0, $1, now())"
 }
 
 function select(){

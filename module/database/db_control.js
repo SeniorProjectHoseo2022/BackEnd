@@ -1,4 +1,5 @@
 const db = require('./db_conn');
+const {NULL} = require("mysql/lib/protocol/constants/types");
 
 function run(sql, value, callback){
     let query = sqlBuilder(sql, value)
@@ -12,7 +13,10 @@ function run(sql, value, callback){
 function sqlBuilder(sql, data){
     let i;
     for (i=0;i<data.length;i++){
-        sql = sql.replace('$'+i.toString(), JSON.stringify(data[i]));
+        if (data[i]=='') {
+            sql = sql.replace('$' + i.toString(), 'NULL');
+        }
+        else sql = sql.replace('$'+i.toString(), JSON.stringify(data[i]));
     }
     return sql;
 }

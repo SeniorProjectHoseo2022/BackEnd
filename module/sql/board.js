@@ -1,8 +1,8 @@
 function show_distance(){
-    return "select * from get_distance having distance"
+    return "select * from get_distance  WHERE uid1=$0"
 }
 function show_agedistance(){
-    return "select * from age_distance having distance"
+    return "select * from age_distance  WHERE uid1=$0"
 }
 
 function show_hotlist(){
@@ -10,11 +10,11 @@ function show_hotlist(){
 }
 
 function select(){
-    return "select * from god_life.board"
+    return "select * from god_life.board ORDER BY writed_time DESC"
 }
 
 function create(){
-    return "INSERT INTO god_life.board (category, rolling, text, view,group_id, writed_time, uid) VALUES ($0, $1, $2, $3, $4, $5, $6)"
+    return "INSERT INTO god_life.board (category, rolling, text, view,group_id, writed_time, uid) VALUES ($0, $1, $2, $3, $4, now(), $5)"
 }
 
 function update(){
@@ -25,9 +25,7 @@ function drop(){
     return "DELETE FROM god_life.board WHERE bid=$0"
 }
 
-function like(){
-    return "INSERT INTO god_life.like_log (bid,uid) VALUES($0,$1)"
-}
+
 
 
 
@@ -39,4 +37,4 @@ module.exports.select = select();
 module.exports.create = create();
 module.exports.update = update();
 module.exports.drop = drop();
-module.exports.like=like();
+

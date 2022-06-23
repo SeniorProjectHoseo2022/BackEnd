@@ -1,13 +1,16 @@
 
 function press(){
-    return "INSERT INTO god_life.comment (bid, uid, time) VALUES ($0, $1, $2)"
+    return "INSERT INTO god_life.like_log (bid, uid, time) VALUES ($0, $1, now())"
 }
 
-function cancel(){
-    return "SELECT * FROM god_life.comment WHERE board_id=$0"
+function select(){
+    return "select * from like_log WHERE bid=$0"
 }
+
 
 
 
 module.exports.press = press();
-module.exports.cancel = cancel();
+module.exports.select = select();
+
+

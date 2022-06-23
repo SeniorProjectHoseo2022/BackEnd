@@ -11,10 +11,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/press', function (req,res){
     try {
-        const bid=req.body.board_bid;
+        const bid=req.body.bid;
         const uid=req.body.uid;
-        const time=req.body.time;
-        db.run(sql.press,[bid,uid,time],function (err,data){
+        db.run(sql.press,[bid,uid],function (err,data){
             if(err == null) res.json({message:"200"})
             else res.json({message:"500", errno:err.errno})
         });
@@ -23,12 +22,11 @@ router.post('/press', function (req,res){
     }
 })
 
-router.post('/cancel', function (req,res){
+router.post('/select', function (req,res){
     try {
-        const board_id = req.body.board_id;
-        const text = req.body.text;
-        db.run(sql.update,[board_id,text],function (err,data){
-            if(err == null) res.json({message:"200"})
+        const bid=req.body.bid;
+        db.run(sql.select,[bid],function (err,data){
+            if(data[0]!=undefined) res.json({data})
             else res.json({message:"500", errno:err.errno})
         });
     }catch (e){

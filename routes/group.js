@@ -29,7 +29,7 @@ router.post('/join_group', function (req,res){
         const group_id=req.body.group_id;
         const uid=req.body.uid;
         db.run(sql.join_group,[group_id,uid],function (err,data){
-            if(data[0]!=undefined)  res.json(data);
+            if(err==null)  res.json({message:"200"});
             else res.json({message:"200", data:"404"})
         });
     }catch (e){

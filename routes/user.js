@@ -55,7 +55,7 @@ router.post('/id_check', function (req,res){
 
 router.post('/change', function (req,res){
     try {
-        const uid = req.body.id;
+        const uid=req.body.uid;
         const id = req.body.id;
         const password = req.body.password;
         const gender = req.body.gender;
@@ -63,9 +63,9 @@ router.post('/change', function (req,res){
         const position = req.body.position;
         const x = req.body.x;
         const y = req.body.y;
-        db.run(sql.login,[id, password],function (err,data){
+        db.run(sql.info_check,[uid],function (err,data){
             if(data[0]!=undefined){
-                db.run(sql.change, [id,gender], function(err2, data2){
+                db.run(sql.change, [uid,id,password,gender,name,position,x,y], function(err2, data2){
                     if(err2 == null)  res.json({message:"200"})
                     else res.json({message:"500", errno:err2.errno})
                 })

@@ -1,8 +1,8 @@
 function show_distance(){
-    return "select * from get_distance  WHERE uid1=$0"
+    return "select * from (select * from get_distance having distance <$1) as a where uid1=$0 or uid2=$2"
 }
 function show_agedistance(){
-    return "select * from age_distance  WHERE uid1=$0"
+    return "select * from (select * from age_distance having distance <$1) as a where uid1=$0 or uid2=$2"
 }
 
 function show_hotlist(){

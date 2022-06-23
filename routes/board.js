@@ -14,8 +14,8 @@ router.get('/', function(req, res, next) {
 router.post('/show_distance', function (req,res){
     try {
         const uid1 = req.body.uid1;
-       // const uid2 = req.body.uid2;
-        db.run(sql.show_distance,[uid1],function (err,data){
+        const distance = req.body.distance;
+        db.run(sql.show_distance,[uid1,distance,uid1],function (err,data){
             if(data[0]!=undefined)  res.json(data);
             else res.json({message:"200", data:"404"})
         });
@@ -27,8 +27,8 @@ router.post('/show_distance', function (req,res){
 router.post('/show_agedistance', function (req,res){
     try {
         const uid1 = req.body.uid1;
-       // const uid2 = req.body.uid2;
-        db.run(sql.show_agedistance,[uid1],function (err,data){
+        const distance = req.body.distance;
+        db.run(sql.show_agedistance,[uid1,distance,uid1],function (err,data){
             if(data[0]!=undefined)  res.json(data);
             else res.json({message:"200", data:"404"})
         });

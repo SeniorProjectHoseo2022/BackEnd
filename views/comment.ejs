@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <form action="comment/create" style="border: solid black;" method="post">
+            <p>comment create</p>
+            board_id : <input type="text" name="board_id" id="board_id"><br>
+            text : <input type="text" name="text" id="text"><br>
+            writed_time : <input type="date" name="writed_time" id="writed_time"><br>
+            <button>Select</button>
+        </form>
+
+    <form action="comment/update" style="border: solid black;" method="post">
+                <p>comment update</p>
+                board_id : <input type="text" name="board_id" id="board_id"><br>
+                text : <input type="text" name="text" id="text"><br>
+                <button>Select</button>
+    </form>
+
+     <form action="comment/drop" style="border: solid black;" method="post">
+                    <p>comment drop</p>
+                    cid : <input type="text" name="cid" id="cid"><br>
+                    <button>Select</button>
+        </form>
+
+    <form action="comment/select" style="border: solid black;" method="post">
+        <p>comment select</p>
+        board_id : <input type="text" name="board_id" id="board_id"><br>
+        <button>Select</button>
+    </form>
+
+
+
+
+
+
+
+
+    verify test : ./verify<br>
+    헤더 authorization에 토큰값 넣어서 보내주시면 됩니다.
+</body>
+
+
+</html>

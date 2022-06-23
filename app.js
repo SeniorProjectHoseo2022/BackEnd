@@ -23,6 +23,7 @@ const boardRouter = require('./routes/board');
 const chatRouter = require('./routes/chat');
 const groupRouter = require('./routes/group');
 const fsRouter = require('./routes/fs');
+const commentRouter = require('./routes/comment');
 app.use('/', indexRouter);
 
 app.use('/test', testRouter);
@@ -31,6 +32,7 @@ app.use('/board', boardRouter);
 app.use('/chat', chatRouter);
 app.use('/group', groupRouter);
 app.use('/fs', fsRouter);
+app.use('/comment', commentRouter);
 //
 
 // catch 404 and forward to error handler

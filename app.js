@@ -21,12 +21,14 @@ const testRouter = require('./routes/test');
 const userRouter = require('./routes/user');
 const boardRouter = require('./routes/board');
 const chatRouter = require('./routes/chat');
+const groupRouter = require('./routes/group');
 app.use('/', indexRouter);
 
 app.use('/test', testRouter);
 app.use('/user', userRouter);
 app.use('/board', boardRouter);
 app.use('/chat', chatRouter);
+app.use('/group', groupRouter);
 //
 
 // catch 404 and forward to error handler

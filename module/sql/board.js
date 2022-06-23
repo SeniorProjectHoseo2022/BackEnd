@@ -10,24 +10,25 @@ function show_hotlist(){
 }
 
 function select(){
-    return "select * from user where id=$0 and password=$1"
+    return "select * from god_life.board"
 }
 
 function create(){
-    return "INSERT INTO god_life.user (id, password, gender, name) VALUES ($0, $1, $2, $3)"
+    return "INSERT INTO god_life.board (category, rolling, text, view,group_id, writed_time, uid) VALUES ($0, $1, $2, $3, $4, $5, $6)"
 }
 
 function update(){
-    return "select count(*) from user where id=$0"
+    return "UPDATE god_life.board SET text=$1  WHERE bid=$0"
 }
 
 function drop(){
-    return "UPDATE god_life.user SET gender=$1 WHERE id=$0"
+    return "DELETE FROM god_life.board WHERE bid=$0"
 }
 
-function withdrawal(){
-    return "DELETE FROM god_life.user WHERE id=$0"
+function like(){
+    return "INSERT INTO god_life.like_log (bid,uid) VALUES($0,$1)"
 }
+
 
 
 
@@ -38,4 +39,4 @@ module.exports.select = select();
 module.exports.create = create();
 module.exports.update = update();
 module.exports.drop = drop();
-module.exports.withdrawal= withdrawal();
+module.exports.like=like();

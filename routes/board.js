@@ -50,10 +50,8 @@ router.post('/show_hotlist', function (req,res){
 
 router.post('/select', function (req,res){
     try {
-        const id = req.body.id;
-        const password = req.body.password;
-        db.run(sql.login,[id, password],function (err,data){
-            if(data[0]!=undefined)  res.json(token.lgToken(data[0]["uid"]))
+        db.run(sql.select,[],function (err,data){
+            if(data[0]!=undefined)  res.json(data);
             else res.json({message:"200", data:"404"})
         });
     }catch (e){
@@ -63,11 +61,14 @@ router.post('/select', function (req,res){
 
 router.post('/create', function (req,res){
     try {
-        const id = req.body.id;
-        const password = req.body.password;
-        const name = req.body.name;
-        const gender = req.body.gender;
-        db.run(sql.sign, [id, password, gender, name], function (err,data){
+        const category = req.body.category;
+        const rolling = req.body.rolling;
+        const text = req.body.text;
+        const view = req.body.view;
+        const group_id = req.body.group_id;
+        const writed_time = req.body.writed_time;
+        const uid = req.body.uid;
+        db.run(sql.create, [category,rolling,text,view,group_id,writed_time,uid], function (err,data){
             if(err == null) res.json({message:"200"})
             else res.json({message:"500", errno:err.errno})
         })
@@ -78,10 +79,10 @@ router.post('/create', function (req,res){
 
 router.post('/update', function (req,res){
     try {
-        const id = req.body.id;
-        db.run(sql.id_check, [id], function (err,data){
-            const c = data[0]["count(*)"];
-            if(err == null) res.json({message:"200", data:c})
+        const bid = req.body.bid;
+        const text = req.body.text;
+        db.run(sql.update, [bid,text], function (err,data){
+            if(err == null) res.json({message:"200"})
             else res.json({message:"500", errno:err.errno})
         })
     }catch (e){
@@ -89,24 +90,19 @@ router.post('/update', function (req,res){
     }
 })
 
-router.post('/delete', function (req,res){
+router.post('/drop', function (req,res){
     try {
-        const id = req.body.id;
-        const password = req.body.password;
-        const gender=req.body.gender;
-        db.run(sql.login,[id, password],function (err,data){
-            if(data[0]!=undefined){
-                db.run(sql.change, [id,gender], function(err2, data2){
-                    if(err2 == null)  res.json({message:"200"})
-                    else res.json({message:"500", errno:err2.errno})
-                })
-            }
-            else res.json({message:"500"})
-        });
+        const bid = req.body.bid;
+        db.run(sql.drop,[bid],function (err,data){
+            if(err == null) res.json({message:"200"})
+            else res.json({message:"500", errno:err.errno})
+        })
     }catch (e){
         res.json({message:"500"})
     }
 })
+
+
 
 
 module.exports = router;

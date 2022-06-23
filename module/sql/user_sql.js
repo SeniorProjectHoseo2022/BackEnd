@@ -23,8 +23,13 @@ function withdrawal(){
     return "DELETE FROM god_life.user WHERE id=$0"
 }
 
+function info(){
+    return "SELECT a.uid, a.point, a.last_updated, a.category, b.name FROM user_category AS a   INNER JOIN category AS b  ON a.category = b.cid WHERE uid=$0"
+}
 
-
+function select() {
+    return "SELECT * FROM user WHERE uid=$0"
+}
 
 module.exports.login = login();
 module.exports.sign = sign();
@@ -32,3 +37,5 @@ module.exports.id_check = id_check();
 module.exports.info_check = info_check();
 module.exports.change= change();
 module.exports.withdrawal= withdrawal();
+module.exports.info= info();
+module.exports.select= select();

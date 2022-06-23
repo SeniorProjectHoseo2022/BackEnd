@@ -38,4 +38,17 @@ router.post('/join_group', function (req,res){
 })
 
 
+router.post('/select', function (req,res){
+    try {
+        const category=req.body.category;
+        db.run(sql.select,[category],function (err,data){
+            if(err==null)  res.json(data);
+            else res.json({message:"200", data:"404"})
+        });
+    }catch (e){
+        res.json({message:"500"})
+    }
+})
+
+
 module.exports = router;

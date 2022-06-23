@@ -95,6 +95,32 @@ router.post('/withdrawal', function (req,res){
     }
 })
 
+
+router.post('/info', function (req,res){
+    try {
+        const uid = req.body.uid;
+        db.run(sql.info,[uid,uid],function (err,data) {
+            if(data[0]!=undefined)  res.json(data);
+            else res.json({message:"200", data:"404"})
+        })
+    }catch (e){
+        res.json({message:"500"})
+    }
+})
+
+
+router.post('/select', function (req,res){
+    try {
+        const uid = req.body.uid;
+        db.run(sql.select,[uid],function (err,data) {
+            if(data[0]!=undefined)  res.json(data);
+            else res.json({message:"200", data:"404"})
+        })
+    }catch (e){
+        res.json({message:"500"})
+    }
+})
+
 router.post('/verify', verifyToken, function (req, res){
     res.json({message:200, decryption:req.decryption})
 })

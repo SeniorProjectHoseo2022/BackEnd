@@ -1,3 +1,13 @@
+function show_distance(){
+    return "select * from get_distance having distance"
+}
+function show_agedistance(){
+    return "select * from age_distance having distance"
+}
+
+function show_hotlist(){
+    return "select * from get_hot_list"
+}
 
 function select(){
     return "select * from user where id=$0 and password=$1"
@@ -21,7 +31,9 @@ function withdrawal(){
 
 
 
-
+module.exports.show_distance = show_distance();
+module.exports.show_agedistance = show_agedistance();
+module.exports.show_hotlist = show_hotlist();
 module.exports.select = select();
 module.exports.create = create();
 module.exports.update = update();

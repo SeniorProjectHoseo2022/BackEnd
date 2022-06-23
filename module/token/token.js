@@ -7,6 +7,7 @@ function login_token(uid){
 
     const res = {
         message: '200',
+        uid: uid,
         accessToken: act,
         refreshToken: rft
     }
